@@ -17,9 +17,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'src/index.html'),
         about: resolve(__dirname, 'src/about.html'),
-        // TODO: Add additional pages when created
-        // services: resolve(__dirname, 'src/services.html'),
-        // contact: resolve(__dirname, 'src/contact.html'),
+        services: resolve(__dirname, 'src/services.html'),
+        contact: resolve(__dirname, 'src/contact.html'),
       }
     }
   },

@@ -1,5 +1,7 @@
 // Main TypeScript file for Rehab Reps website
 import { RehabRepsThemeManager } from './theme-manager.js';
+import { createNavigation } from '../components/navigation.js';
+import { createFooter } from '../components/footer.js';
 
 interface HeroAnimation {
   init(): void;
@@ -15,10 +17,29 @@ class RehabRepsHeroAnimation implements HeroAnimation {
   private slides: NodeListOf<Element> | null = null;
   private indicators: NodeListOf<Element> | null = null;
   private themeManager: RehabRepsThemeManager;
+  private timelineInterval: number | null = null;
+  private isTimelinePaused = false;
+  private timelineStartTime: number = 0;
+  private timelineElapsed: number = 0;
 
   constructor() {
     this.themeManager = new RehabRepsThemeManager();
+    this.injectComponents();
     this.init();
+  }
+
+  private injectComponents(): void {
+    // Inject navigation component
+    const navPlaceholder = document.getElementById('nav-placeholder');
+    if (navPlaceholder) {
+      navPlaceholder.innerHTML = createNavigation('home');
+    }
+
+    // Inject footer component
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    if (footerPlaceholder) {
+      footerPlaceholder.innerHTML = createFooter();
+    }
   }
 
   init(): void {
@@ -39,6 +60,7 @@ class RehabRepsHeroAnimation implements HeroAnimation {
     this.setupPerformanceMetrics();
     this.setupParticleInteractions();
     this.updateCopyright();
+    this.setupVisibilityChangeHandler();
   }
 
   animateOnScroll(): void {
@@ -78,9 +100,9 @@ class RehabRepsHeroAnimation implements HeroAnimation {
       // Animate hero words with stagger
       this.animateHeroWords();
       
-      // Trigger performance metrics after delay
+      // Trigger rehabilitation timeline after delay
       setTimeout(() => {
-        this.animatePerformanceMetrics();
+        this.animateRehabilitationTimeline();
       }, 1000);
     }
   }
@@ -98,16 +120,92 @@ class RehabRepsHeroAnimation implements HeroAnimation {
     });
   }
 
-  private animatePerformanceMetrics(): void {
-    const metrics = document.querySelectorAll('.metric-fill');
+  private animateRehabilitationTimeline(): void {
+    const timeline = document.querySelector('.rehabilitation-progress');
+    if (!timeline) return;
+
+    const phases = [
+      { name: 'EVALUATE', description: 'Comprehensive movement assessment', position: 0 },
+      { name: 'RECOVER', description: 'Pain management and acute care', position: 25 },
+      { name: 'REBUILD', description: 'Restore strength and mobility', position: 50 },
+      { name: 'RELOAD', description: 'Sport-specific performance training', position: 75 },
+      { name: 'MAINTAIN', description: 'Ongoing wellness support', position: 100 }
+    ];
+
+    let currentPhase = 0;
     
-    metrics.forEach((metric, index) => {
-      const targetWidth = metric.getAttribute('data-width') || '0%';
+    const progressFill = timeline.querySelector('.progress-fill') as HTMLElement;
+    const progressDot = timeline.querySelector('.progress-dot') as HTMLElement;
+    const phaseText = timeline.querySelector('.phase-text') as HTMLElement;
+    const phaseDescription = timeline.querySelector('.phase-description') as HTMLElement;
+    const markers = timeline.querySelectorAll('.marker');
+    const phaseLabels = timeline.querySelectorAll('.phase-labels span');
+
+    const animateToPhase = (phaseIndex: number) => {
+      const phase = phases[phaseIndex];
       
-      setTimeout(() => {
-        (metric as HTMLElement).style.width = targetWidth;
-      }, index * 200);
-    });
+      // Update progress fill and dot position
+      if (progressFill) {
+        progressFill.style.width = `${phase.position}%`;
+      }
+      if (progressDot) {
+        progressDot.style.left = `${phase.position}%`;
+      }
+
+      // Update active marker
+      markers.forEach((marker, index) => {
+        marker.classList.toggle('active', index === phaseIndex);
+      });
+
+      // Update phase label styles based on current stage
+      phaseLabels.forEach((label, index) => {
+        label.classList.remove('passed', 'active');
+        if (index < phaseIndex) {
+          label.classList.add('passed'); // Light gray for passed phases
+        } else if (index === phaseIndex) {
+          label.classList.add('active'); // Darker for current phase
+        }
+        // Future phases remain default gray
+      });
+
+      // Update phase text with fade effect
+      if (phaseText && phaseDescription) {
+        phaseText.classList.add('fading');
+        phaseDescription.classList.add('fading');
+        
+        setTimeout(() => {
+          phaseText.textContent = phase.name;
+          phaseDescription.textContent = phase.description;
+          phaseText.classList.remove('fading');
+          phaseDescription.classList.remove('fading');
+        }, 150);
+      }
+    };
+
+    const startTimeline = () => {
+      this.timelineStartTime = Date.now();
+      this.timelineElapsed = 0;
+      
+      // Start the progression through phases
+      const cyclePhases = () => {
+        if (this.isTimelinePaused) return;
+        
+        animateToPhase(currentPhase);
+        currentPhase = (currentPhase + 1) % phases.length;
+        
+        if (currentPhase === 0) {
+          // Reset cycle timing
+          this.timelineInterval = window.setTimeout(cyclePhases, 5250);
+        } else {
+          this.timelineInterval = window.setTimeout(cyclePhases, 3750);
+        }
+      };
+
+      // Start after initial delay
+      this.timelineInterval = window.setTimeout(cyclePhases, 1500);
+    };
+
+    startTimeline();
   }
 
   setupCarousel(): void {
@@ -268,6 +366,159 @@ class RehabRepsHeroAnimation implements HeroAnimation {
       copyrightElement.textContent = `© ${currentYear} Rehab Reps All Rights Reserved`;
     }
   }
+
+  private setupVisibilityChangeHandler(): void {
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        this.pauseTimelineAnimation();
+      } else {
+        this.resumeTimelineAnimation();
+      }
+    });
+  }
+
+  private pauseTimelineAnimation(): void {
+    if (this.timelineInterval && !this.isTimelinePaused) {
+      this.isTimelinePaused = true;
+      this.timelineElapsed += Date.now() - this.timelineStartTime;
+      clearTimeout(this.timelineInterval);
+      this.timelineInterval = null;
+    }
+  }
+
+  private resumeTimelineAnimation(): void {
+    if (this.isTimelinePaused) {
+      this.isTimelinePaused = false;
+      this.timelineStartTime = Date.now();
+      
+      const timeline = document.querySelector('.rehabilitation-progress');
+      if (timeline) {
+        this.resumeTimelineFromElapsed();
+      }
+    }
+  }
+
+  private resumeTimelineFromElapsed(): void {
+    const phases = [
+      { name: 'EVALUATE', description: 'Comprehensive movement assessment', position: 0 },
+      { name: 'RECOVER', description: 'Pain management and acute care', position: 25 },
+      { name: 'REBUILD', description: 'Restore strength and mobility', position: 50 },
+      { name: 'RELOAD', description: 'Sport-specific performance training', position: 75 },
+      { name: 'MAINTAIN', description: 'Ongoing wellness support', position: 100 }
+    ];
+
+    const totalCycleTime = (3750 * 4) + 5250;
+    const normalizedElapsed = this.timelineElapsed % totalCycleTime;
+    
+    let currentPhaseIndex = 0;
+    let phaseStartTime = 1500;
+    
+    if (normalizedElapsed > phaseStartTime) {
+      for (let i = 0; i < phases.length; i++) {
+        const phaseEndTime = phaseStartTime + (i === phases.length - 1 ? 5250 : 3750);
+        if (normalizedElapsed <= phaseEndTime) {
+          currentPhaseIndex = i;
+          break;
+        }
+        phaseStartTime = phaseEndTime;
+      }
+    }
+    
+    this.animateToPhaseSmooth(currentPhaseIndex);
+    
+    const remainingTime = Math.max(100, (phaseStartTime + (currentPhaseIndex === phases.length - 1 ? 5250 : 3750)) - normalizedElapsed);
+    this.timelineInterval = window.setTimeout(() => {
+      this.continueTimelineAnimation(currentPhaseIndex);
+    }, remainingTime);
+  }
+
+  private continueTimelineAnimation(currentPhase: number): void {
+    const phases = [
+      { name: 'EVALUATE', description: 'Comprehensive movement assessment', position: 0 },
+      { name: 'RECOVER', description: 'Pain management and acute care', position: 25 },
+      { name: 'REBUILD', description: 'Restore strength and mobility', position: 50 },
+      { name: 'RELOAD', description: 'Sport-specific performance training', position: 75 },
+      { name: 'MAINTAIN', description: 'Ongoing wellness support', position: 100 }
+    ];
+
+    const nextPhase = (currentPhase + 1) % phases.length;
+    this.animateToPhaseSmooth(nextPhase);
+    
+    const nextDelay = nextPhase === 0 ? 5250 : 3750;
+    this.timelineInterval = window.setTimeout(() => {
+      this.continueTimelineAnimation(nextPhase);
+    }, nextDelay);
+  }
+
+  private animateToPhaseSmooth(phaseIndex: number): void {
+    const timeline = document.querySelector('.rehabilitation-progress');
+    if (!timeline) return;
+
+    const phases = [
+      { name: 'EVALUATE', description: 'Comprehensive movement assessment', position: 0 },
+      { name: 'RECOVER', description: 'Pain management and acute care', position: 25 },
+      { name: 'REBUILD', description: 'Restore strength and mobility', position: 50 },
+      { name: 'RELOAD', description: 'Sport-specific performance training', position: 75 },
+      { name: 'MAINTAIN', description: 'Ongoing wellness support', position: 100 }
+    ];
+
+    const phase = phases[phaseIndex];
+    const progressFill = timeline.querySelector('.progress-fill') as HTMLElement;
+    const progressDot = timeline.querySelector('.progress-dot') as HTMLElement;
+    const phaseText = timeline.querySelector('.phase-text') as HTMLElement;
+    const phaseDescription = timeline.querySelector('.phase-description') as HTMLElement;
+    const markers = timeline.querySelectorAll('.marker');
+    const phaseLabels = timeline.querySelectorAll('.phase-labels span');
+
+    if (progressFill) {
+      progressFill.style.width = `${phase.position}%`;
+    }
+    if (progressDot) {
+      progressDot.style.left = `${phase.position}%`;
+    }
+
+    markers.forEach((marker, index) => {
+      marker.classList.toggle('active', index === phaseIndex);
+    });
+
+    phaseLabels.forEach((label, index) => {
+      label.classList.remove('passed', 'active');
+      if (index < phaseIndex) {
+        label.classList.add('passed');
+      } else if (index === phaseIndex) {
+        label.classList.add('active');
+      }
+    });
+
+    if (phaseText && phaseDescription) {
+      phaseText.classList.add('fading');
+      phaseDescription.classList.add('fading');
+      
+      setTimeout(() => {
+        phaseText.textContent = phase.name;
+        phaseDescription.textContent = phase.description;
+        phaseText.classList.remove('fading');
+        phaseDescription.classList.remove('fading');
+      }, 150);
+    }
+  }
+
+  cleanup(): void {
+    // Clear all intervals
+    if (this.slideInterval) {
+      clearInterval(this.slideInterval);
+      this.slideInterval = null;
+    }
+    if (this.timelineInterval) {
+      clearTimeout(this.timelineInterval);
+      this.timelineInterval = null;
+    }
+    
+    // Reset timeline state
+    this.isTimelinePaused = false;
+    this.timelineElapsed = 0;
+    this.timelineStartTime = 0;
+  }
 }
 
 // Performance optimizations
@@ -275,7 +526,8 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 if (!prefersReducedMotion) {
   // Initialize animations only if user doesn't prefer reduced motion
-  new RehabRepsHeroAnimation();
+  const rehabRepsInstance = new RehabRepsHeroAnimation();
+  (window as any).rehabRepsInstance = rehabRepsInstance;
 } else {
   // Fallback for reduced motion users
   document.addEventListener('DOMContentLoaded', () => {
@@ -291,10 +543,11 @@ if (!prefersReducedMotion) {
     const animation = new RehabRepsHeroAnimation();
     animation.setupMobileMenu();
     animation.setupCarousel();
+    (window as any).rehabRepsInstance = animation;
   });
 }
 
-// Error handling
+// Error handling and cleanup
 window.addEventListener('error', (e) => {
   console.error('Animation error:', e.error);
   // Graceful fallback - ensure content is visible
@@ -306,6 +559,15 @@ window.addEventListener('error', (e) => {
   }
   if (heroImage) {
     (heroImage as HTMLElement).style.opacity = '1';
+  }
+});
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', () => {
+  // Clear any running timeline intervals to prevent memory leaks
+  const rehabRepsInstance = (window as any).rehabRepsInstance;
+  if (rehabRepsInstance && typeof rehabRepsInstance.cleanup === 'function') {
+    rehabRepsInstance.cleanup();
   }
 });
 

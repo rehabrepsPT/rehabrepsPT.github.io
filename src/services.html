@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services - Rehab Reps Physical Therapy</title>
+  <meta name="description" content="Comprehensive physical therapy services including sport and orthopedic therapy, performance training, and specialized treatment methods in Jacksonville, FL." />
+  
+  <!-- Immediate theme preload to prevent flash -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('rr-theme');
+      const theme = savedTheme || 'system';
+      let isDark = false;
+      
+      if (theme === 'dark') {
+        isDark = true;
+      } else if (theme === 'system') {
+        isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      }
+      
+      // Add loading class to prevent flash
+      document.documentElement.classList.add('theme-loading');
+    })();
+  </script>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/images/rr-logo.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/images/favicon-180.png">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles/main.css">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+</head>
+<body class="bg-background-light">
+  
+  <!-- Loading overlay to prevent flash -->
+  <div id="page-loading" class="page-loading"></div>
+  
+  <!-- Navigation Placeholder -->
+  <div id="nav-placeholder"></div>
+
+  <!-- Page Header -->
+  <section class="page-header bg-gradient-to-br from-background-light to-gray-50 pt-24 pb-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-rr-black mb-4 leading-tight page-title-animate">
+          Our <span class="text-rr-yellow">Services</span>
+        </h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto page-subtitle-animate">
+          What We Offer
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Overview Section -->
+  <section id="services-overview" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        
+        <!-- Sport and Orthopedic Physical Therapy -->
+        <div class="service-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-white p-8 hover:shadow-2xl transition-all duration-500">
+          <div class="flex items-center mb-6">
+            <div class="w-16 h-16 bg-rr-yellow/20 rounded-full flex items-center justify-center mr-4">
+              <svg class="w-8 h-8 text-rr-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-rr-black">Sport and Orthopedic Physical Therapy</h3>
+          </div>
+          
+          <div class="space-y-3">
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-rr-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Shoulder pain</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-rr-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Wrist/Elbow pain</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-rr-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Thoracic pain</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-rr-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Lumbar pain (Low back pain)</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-rr-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Hip pain</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-rr-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Knee pain</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-rr-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Foot/Ankle pain</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-rr-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Balance and fall risk</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sport-Specific Performance Training -->
+        <div class="service-card bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-white p-8 hover:shadow-2xl transition-all duration-500">
+          <div class="flex items-center mb-6">
+            <div class="w-16 h-16 bg-rr-yellow/20 rounded-full flex items-center justify-center mr-4">
+              <svg class="w-8 h-8 text-rr-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-rr-black">Sport-Specific Performance Training</h3>
+          </div>
+          
+          <div class="space-y-3">
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-rr-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Mobility deficits</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-rr-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Strength deficits</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-rr-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Movement-specific training (Gymnastics, Olympic weightlifting, Powerlifting, etc.)</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-rr-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Speed & Agility</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-rr-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Running</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Treatment Methods Section -->
+  <section class="py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-rr-black mb-4 treatment-section-title opacity-0">
+          How We Treat
+        </h2>
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto treatment-section-subtitle opacity-0">
+          Evidence-based treatment approaches tailored to your specific needs and recovery goals.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="treatment-method bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-100 dark:border-white hover:shadow-lg transition-all duration-300">
+          <div class="w-12 h-12 bg-rr-yellow/20 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-rr-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-rr-black mb-2">Therapeutic Exercise</h3>
+        </div>
+        
+        <div class="treatment-method bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-100 dark:border-white hover:shadow-lg transition-all duration-300">
+          <div class="w-12 h-12 bg-rr-yellow/20 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-rr-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-rr-black mb-2">Dry Needling</h3>
+        </div>
+        
+        <div class="treatment-method bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-100 dark:border-white hover:shadow-lg transition-all duration-300">
+          <div class="w-12 h-12 bg-rr-yellow/20 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-rr-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-rr-black mb-2">Myofascial Decompression Cupping</h3>
+        </div>
+        
+        <div class="treatment-method bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-100 dark:border-white hover:shadow-lg transition-all duration-300">
+          <div class="w-12 h-12 bg-rr-yellow/20 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-rr-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-rr-black mb-2">Joint Mobilization/Manipulation</h3>
+        </div>
+        
+        <div class="treatment-method bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-100 dark:border-white hover:shadow-lg transition-all duration-300">
+          <div class="w-12 h-12 bg-rr-yellow/20 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-rr-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.05 4.575a1.575 1.575 0 10-3.15 0v3m3.15-3v-1.5a1.575 1.575 0 013.15 0v1.5m-3.15 0l.075 5.925m3.075.75V4.575m0 0a1.575 1.575 0 013.15 0V15M6.9 7.575a1.575 1.575 0 10-3.15 0v8.175a6.75 6.75 0 006.75 6.75h2.018a5.25 5.25 0 003.712-1.538l1.732-1.732a5.25 5.25 0 001.538-3.712l.003-2.024a.668.668 0 01.198-.471 1.575 1.575 0 10-2.228-2.228 3.818 3.818 0 00-1.12 2.687M6.9 7.575V12m6.27 4.318A4.49 4.49 0 0116.35 15m.002 0h-.002"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-rr-black mb-2">Soft Tissue Massage</h3>
+        </div>
+        
+        <div class="treatment-method bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-100 dark:border-white hover:shadow-lg transition-all duration-300">
+          <div class="w-12 h-12 bg-rr-yellow/20 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-rr-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-rr-black mb-2">Taping</h3>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Office Gallery + Service Benefits -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        <!-- Office Images -->
+        <div class="office-gallery opacity-0">
+          <div class="space-y-4">
+            <div class="rounded-2xl overflow-hidden shadow-xl">
+              <img src="/images/room2.png" alt="Rehab Reps Physical Therapy Office - Treatment Area" class="w-full h-64 object-cover">
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-xl">
+              <img src="/images/room1.png" alt="Rehab Reps Physical Therapy Office - Equipment Area" class="w-full h-64 object-cover">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Service Benefits -->
+        <div class="service-benefits opacity-0">
+          <h2 class="text-3xl lg:text-4xl font-bold text-rr-black mb-6">
+            What Comes with Service?
+          </h2>
+          <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+            Treatment plans including manual therapy, mobility, strength and conditioning, neuromuscular and proprioceptive training, and sport-specific training.
+          </p>
+          
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-rr-yellow mr-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">60-minute evaluation and treatment session</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-rr-yellow mr-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">One-on-one clinician attention</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-rr-yellow mr-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Plans addressing needs in <strong>REcover</strong> phase to <strong>REbuild</strong> phase to <strong>REload-to-sport</strong> phase</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-rr-yellow mr-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Personalized and specific home exercise program</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-rr-yellow mr-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Accessibility to your clinician (via email or phone)</span>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-rr-yellow mr-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-gray-700">Weekly support to personally modify your current fitness programming</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="py-20 bg-gradient-to-br from-gray-50 to-background-light text-rr-black dark:text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="cta-content opacity-0">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-6">
+          Ready to Start Your Recovery Journey?
+        </h2>
+        <p class="text-lg lg:text-xl mb-8 text-gray-600 dark:text-gray-300 leading-relaxed">
+          Schedule your comprehensive evaluation and take the first step toward pain-free performance.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://rehabreps.janeapp.com/" class="inline-flex items-center justify-center bg-rr-black text-white px-8 py-4 rounded-lg hover:bg-rr-yellow hover:text-rr-black transition-all duration-300 font-semibold text-lg">
+            Book Your Appointment
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a href="/contact.html" class="inline-flex items-center justify-center border-2 border-rr-black text-rr-black px-8 py-4 rounded-lg hover:bg-rr-black hover:text-white transition-all duration-300 font-medium text-lg">
+            Contact Us
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script type="module" src="/scripts/theme-manager.ts"></script>
+  <script type="module" src="/scripts/services-page.ts"></script>
+  
+</body>
+</html>

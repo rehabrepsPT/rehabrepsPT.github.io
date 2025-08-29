@@ -1,14 +1,19 @@
+import { createNavigation } from '../components/navigation.js';
+import { createFooter } from '../components/footer.js';
+
 // About Page Specific Animations
 interface AboutPageAnimations {
   init(): void;
   setupScrollAnimations(): void;
   setupValueCardAnimations(): void;
+  injectComponents(): void;
 }
 
 class AboutPageController implements AboutPageAnimations {
   private isAnimated = new Set<string>();
 
   constructor() {
+    this.injectComponents();
     this.init();
   }
 
@@ -22,9 +27,54 @@ class AboutPageController implements AboutPageAnimations {
     }
   }
 
+  injectComponents(): void {
+    const navPlaceholder = document.getElementById('nav-placeholder');
+    if (navPlaceholder) {
+      navPlaceholder.innerHTML = createNavigation('about');
+    }
+
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    if (footerPlaceholder) {
+      footerPlaceholder.innerHTML = createFooter();
+    }
+  }
+
   private setupAnimations(): void {
+    this.resetAnimationStates();
     this.setupScrollAnimations();
     this.setupValueCardAnimations();
+  }
+
+  private resetAnimationStates(): void {
+    // Clear the animation tracking set to allow re-animation
+    this.isAnimated.clear();
+    
+    // Reset bio content to initial state, clearing any inline styles
+    const bioContent = document.querySelector('.bio-content') as HTMLElement;
+    if (bioContent) {
+      // Clear inline styles that may persist from previous navigation
+      bioContent.style.opacity = '';
+      bioContent.style.transform = '';
+      bioContent.style.transition = '';
+      
+      // Let CSS handle the initial hidden state
+    }
+
+    // Reset page header elements
+    const pageTitle = document.querySelector('.page-title-animate') as HTMLElement;
+    const pageSubtitle = document.querySelector('.page-subtitle-animate') as HTMLElement;
+    
+    if (pageTitle) {
+      pageTitle.style.opacity = '';
+      pageTitle.style.transform = '';
+      pageTitle.style.transition = '';
+    }
+    
+    if (pageSubtitle) {
+      pageSubtitle.style.opacity = '';
+      pageSubtitle.style.transform = '';
+      pageSubtitle.style.transition = '';
+    }
   }
 
   setupScrollAnimations(): void {
@@ -49,8 +99,10 @@ class AboutPageController implements AboutPageAnimations {
       }
     );
 
-    // Only observe bio content for slide animation
+    // Observe page header and bio content for animations
     const elementsToObserve = [
+      '.page-title-animate',
+      '.page-subtitle-animate',
       '.bio-content'
     ];
 
@@ -63,21 +115,61 @@ class AboutPageController implements AboutPageAnimations {
   private triggerAnimation(element: Element): void {
     const className = element.className;
     
-    if (className.includes('bio-content')) {
+    if (className.includes('page-title-animate')) {
+      this.animatePageTitle(element);
+    } else if (className.includes('page-subtitle-animate')) {
+      this.animatePageSubtitle(element);
+    } else if (className.includes('bio-content')) {
       this.animateBioContent(element);
     }
   }
 
-
-  private animateBioContent(element: Element): void {
-    (element as HTMLElement).style.opacity = '0';
-    (element as HTMLElement).style.transform = 'translateX(50px)';
-    (element as HTMLElement).style.transition = 'all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+  private animatePageTitle(element: Element): void {
+    const el = element as HTMLElement;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all 0.8s ease-out';
+    
+    // Force reflow
+    el.offsetHeight;
     
     setTimeout(() => {
-      (element as HTMLElement).style.opacity = '1';
-      (element as HTMLElement).style.transform = 'translateX(0px)';
-    }, 400);
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 100);
+  }
+
+  private animatePageSubtitle(element: Element): void {
+    const el = element as HTMLElement;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'all 0.8s ease-out';
+    
+    // Force reflow
+    el.offsetHeight;
+    
+    setTimeout(() => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 200);
+  }
+
+  private animateBioContent(element: Element): void {
+    const el = element as HTMLElement;
+    
+    // Ensure element starts from initial hidden state
+    el.style.opacity = '0';
+    el.style.transform = 'translateX(50px)';
+    el.style.transition = 'all 0.8s ease-out';
+    
+    // Force reflow to ensure initial state is applied
+    el.offsetHeight;
+    
+    // Trigger animation
+    setTimeout(() => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateX(0px)';
+    }, 50);
   }
 
 
@@ -100,6 +192,10 @@ class AboutPageController implements AboutPageAnimations {
     const title = card.querySelector('h3');
     
     if (icon && title) {
+      // Set explicit transition for smooth hover animations
+      (icon as HTMLElement).style.transition = 'transform 0.3s ease';
+      (title as HTMLElement).style.transition = 'color 0.3s ease';
+      
       if (isHover) {
         (icon as HTMLElement).style.transform = 'scale(1.1) rotate(5deg)';
         (title as HTMLElement).style.color = '#ffe400';
@@ -121,6 +217,8 @@ if (!prefersReducedMotion) {
   // Fallback for reduced motion users - make everything visible
   document.addEventListener('DOMContentLoaded', () => {
     const elementsToShow = [
+      '.page-title-animate',
+      '.page-subtitle-animate',
       '.bio-content'
     ];
 

@@ -29,12 +29,12 @@ export class RehabRepsThemeManager implements ThemeManager {
         this.applyTheme();
       }
     });
-
-    // Update toggle button state
-    this.updateToggleButton();
     
-    // Add event listener to toggle button
+    // Add event listener to toggle button (includes updating button state)
     this.setupToggleButton();
+    
+    // Remove loading state and show content after theme is applied
+    this.finishLoading();
   }
 
   setTheme(theme: 'light' | 'dark' | 'system'): void {
@@ -94,20 +94,28 @@ export class RehabRepsThemeManager implements ThemeManager {
   }
 
   private setupToggleButton(): void {
-    const toggleButton = document.getElementById('theme-toggle');
-    const mobileToggleButton = document.getElementById('theme-toggle-mobile');
-    
-    if (toggleButton) {
-      toggleButton.addEventListener('click', () => {
-        this.toggleTheme();
-      });
-    }
-    
-    if (mobileToggleButton) {
-      mobileToggleButton.addEventListener('click', () => {
-        this.toggleTheme();
-      });
-    }
+    // Use setTimeout to ensure DOM is ready after component injection
+    setTimeout(() => {
+      const toggleButton = document.getElementById('theme-toggle');
+      const mobileToggleButton = document.getElementById('theme-toggle-mobile');
+      
+      if (toggleButton) {
+        toggleButton.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.toggleTheme();
+        });
+      }
+      
+      if (mobileToggleButton) {
+        mobileToggleButton.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.toggleTheme();
+        });
+      }
+
+      // Update toggle button state after setting up listeners
+      this.updateToggleButton();
+    }, 50);
   }
 
   private updateToggleButton(): void {
@@ -138,11 +146,13 @@ export class RehabRepsThemeManager implements ThemeManager {
       isDark ? 'Switch to light mode' : 'Switch to dark mode'
     );
 
-    // Add smooth rotation animation
-    toggleButton.style.transform = 'rotate(180deg)';
-    setTimeout(() => {
-      toggleButton.style.transform = 'rotate(0deg)';
-    }, 150);
+    // Add smooth rotation animation only if not initial load
+    if (toggleButton.style.transform !== '') {
+      toggleButton.style.transform = 'rotate(180deg)';
+      setTimeout(() => {
+        toggleButton.style.transform = 'rotate(0deg)';
+      }, 150);
+    }
   }
 
   private updateMobileToggle(): void {
@@ -176,16 +186,36 @@ export class RehabRepsThemeManager implements ThemeManager {
       isDark ? 'Switch to light mode' : 'Switch to dark mode'
     );
 
-    // Add smooth rotation animation
-    mobileToggleButton.style.transform = 'rotate(180deg)';
-    setTimeout(() => {
-      mobileToggleButton.style.transform = 'rotate(0deg)';
-    }, 150);
+    // Add smooth rotation animation only if not initial load
+    if (mobileToggleButton.style.transform !== '') {
+      mobileToggleButton.style.transform = 'rotate(180deg)';
+      setTimeout(() => {
+        mobileToggleButton.style.transform = 'rotate(0deg)';
+      }, 150);
+    }
   }
 
   // Public method to get theme preference for animations
   getThemePreference(): 'light' | 'dark' | 'system' {
     return this.currentTheme;
+  }
+
+  // Remove loading states and enable smooth transitions
+  private finishLoading(): void {
+    // Small delay to ensure DOM is ready and theme is applied
+    setTimeout(() => {
+      // Remove theme loading class to enable transitions
+      document.documentElement.classList.remove('theme-loading');
+      
+      // Hide loading overlay
+      const loadingOverlay = document.getElementById('page-loading');
+      if (loadingOverlay) {
+        loadingOverlay.classList.add('fade-out');
+        setTimeout(() => {
+          loadingOverlay.remove();
+        }, 300);
+      }
+    }, 50);
   }
 }
 

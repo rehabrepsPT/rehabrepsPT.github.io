@@ -100,6 +100,15 @@
   color: #1a1a1a;
 }
 
+/* High specificity override for Book Appointment button */
+.dark .bg-rr-black.text-white {
+  color: #1a1a1a !important;
+}
+
+.dark .bg-rr-black.text-white:hover {
+  color: #1a1a1a !important;
+}
+
 .dark .border-rr-black {
   border-color: var(--dark-border);
   color: var(--dark-text);
@@ -307,6 +316,11 @@ footer,
 /* Additional high-specificity overrides for stubborn Tailwind classes */
 .dark section.bg-gradient-to-br {
   background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-surface) 100%) !important;
+}
+
+/* Services Page CTA Section Dark Mode */
+.dark section.bg-gradient-to-br.from-gray-50.to-background-light {
+  background: linear-gradient(135deg, var(--dark-surface) 0%, var(--dark-bg) 100%) !important;
 }
 
 .dark .bg-white {
