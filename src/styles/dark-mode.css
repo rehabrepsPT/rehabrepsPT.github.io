@@ -281,6 +281,65 @@ footer,
   color: #808080 !important;
 }
 
+/* About Page Dark Mode - High Specificity Overrides */
+.dark section.page-header.bg-gradient-to-br.from-background-light.to-gray-50 {
+  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-surface) 100%) !important;
+}
+
+.dark section.mission-section.py-16.lg\:py-24.bg-gradient-to-br.from-gray-50.to-background-light {
+  background: linear-gradient(135deg, var(--dark-surface) 0%, var(--dark-bg) 100%) !important;
+}
+
+.dark .mission-content.bg-white.rounded-2xl {
+  background-color: var(--dark-surface) !important;
+  border: 1px solid var(--dark-border);
+}
+
+.dark .mission-title {
+  color: var(--dark-text) !important;
+}
+
+.dark .mission-title .text-rr-yellow {
+  color: var(--rr-yellow) !important;
+}
+
+
+/* Additional high-specificity overrides for stubborn Tailwind classes */
+.dark section.bg-gradient-to-br {
+  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-surface) 100%) !important;
+}
+
+.dark .bg-white {
+  background-color: var(--dark-surface) !important;
+}
+
+.dark .hero-bio {
+  background-color: var(--dark-bg);
+}
+
+.dark .values-section {
+  background-color: var(--dark-bg);
+}
+
+.dark .value-card {
+  background-color: var(--dark-surface) !important;
+  border: 1px solid var(--dark-border);
+}
+
+.dark .value-card:hover {
+  background-color: var(--dark-gradient-mid) !important;
+  transform: translateY(-5px);
+}
+
+/* Bio section dark mode */
+.dark .bio-content h2 {
+  color: var(--dark-text) !important;
+}
+
+.dark .bio-text p {
+  color: var(--dark-text-secondary) !important;
+}
+
 /* Dark Mode Animation Enhancements */
 .dark .hero-cta a::before {
   background: rgba(255, 228, 0, 0.2);

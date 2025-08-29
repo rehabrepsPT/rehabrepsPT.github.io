@@ -114,7 +114,7 @@ class RehabRepsHeroAnimation implements HeroAnimation {
     this.slides = document.querySelectorAll('.carousel-slide');
     this.indicators = document.querySelectorAll('.indicator');
 
-    if (!this.slides || !this.indicators) return;
+    if (!this.slides || !this.indicators || this.slides.length === 0 || this.indicators.length === 0) return;
 
     // Setup indicator click events
     this.indicators.forEach((indicator, index) => {
@@ -141,20 +141,28 @@ class RehabRepsHeroAnimation implements HeroAnimation {
 
   private goToSlide(index: number): void {
     if (!this.slides || !this.indicators) return;
+    if (index < 0 || index >= this.slides.length) return;
 
     // Remove active states
     this.slides.forEach(slide => slide.classList.remove('active'));
     this.indicators.forEach(indicator => indicator.classList.remove('active'));
 
-    // Add active states
-    this.slides[index].classList.add('active');
-    this.indicators[index].classList.add('active');
+    // Add active states - check if elements exist
+    const targetSlide = this.slides[index];
+    const targetIndicator = this.indicators[index];
+    
+    if (targetSlide) {
+      targetSlide.classList.add('active');
+    }
+    if (targetIndicator) {
+      targetIndicator.classList.add('active');
+    }
 
     this.currentSlide = index;
   }
 
   private nextSlide(): void {
-    if (!this.slides) return;
+    if (!this.slides || this.slides.length === 0) return;
     
     const nextIndex = (this.currentSlide + 1) % this.slides.length;
     this.goToSlide(nextIndex);

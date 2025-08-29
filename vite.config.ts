@@ -16,8 +16,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src/index.html'),
+        about: resolve(__dirname, 'src/about.html'),
         // TODO: Add additional pages when created
-        // about: resolve(__dirname, 'src/about.html'),
         // services: resolve(__dirname, 'src/services.html'),
         // contact: resolve(__dirname, 'src/contact.html'),
       }
