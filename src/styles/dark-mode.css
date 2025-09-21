@@ -261,7 +261,7 @@ footer,
 }
 
 .dark::-webkit-scrollbar-thumb {
-  background: var(--dark-border);
+  background: var(--dark-surface);
   border-radius: 4px;
 }
 
