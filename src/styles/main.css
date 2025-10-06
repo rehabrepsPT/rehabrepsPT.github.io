@@ -50,6 +50,15 @@ html:not(.theme-loading) .value-icon {
   transition: none; /* Let hover JavaScript handle these */
 }
 
+/* CRITICAL: Exclude all gradient elements from global transitions for smooth scrolling
+html:not(.theme-loading) .bg-gradient-to-br,
+html:not(.theme-loading) .smooth-gradient,
+html:not(.theme-loading) .page-header,
+html:not(.theme-loading) .mission-section,
+html:not(.theme-loading) section[class*="bg-gradient"] {
+  transition: none !important;
+} */
+
 /* Loading overlay for smooth page transitions */
 .page-loading {
   position: fixed;
@@ -98,16 +107,6 @@ html:not(.theme-loading) .value-icon {
   opacity: 0;
   transform: translateY(20px);
 }
-
-/* .service-card {
-  opacity: 0;
-  transform: translateY(50px);
-} */
-
-/* .treatment-method {
-  opacity: 0;
-  transform: translateY(30px);
-} */
 
 .office-gallery {
   opacity: 0;
@@ -168,23 +167,6 @@ a:focus, button:focus {
   outline-offset: 2px;
 }
 
-/* Consistent scrollbar styling for light mode */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--rr-yellow);
-}
 
 /* Loading states */
 .loading {

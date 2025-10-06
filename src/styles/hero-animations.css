@@ -206,7 +206,7 @@
 }
 
 /* Responsive Hover Effects */
-@media (hover: hover) {
+/* @media (hover: hover) {
   .particle {
     transition: all 0.3s ease;
   }
@@ -224,7 +224,7 @@
   .hero-section:hover .geometric-shape {
     transform: scale(1.05) rotate(calc(var(--initial-rotation, 0deg) + 5deg));
   }
-}
+} */
 
 /* Performance Optimizations */
 .hero-bg-animation {
@@ -273,7 +273,7 @@
 }
 
 /* Athletic pulse effect for CTA buttons */
-.hero-cta a {
+/* .hero-cta a {
   position: relative;
   overflow: hidden;
 }
@@ -295,7 +295,7 @@
 .hero-cta a:hover::before {
   width: 120%;
   height: 120%;
-}
+} */
 
 /* Mobile Optimizations */
 @media (max-width: 768px) {

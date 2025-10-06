@@ -115,7 +115,7 @@ class RehabRepsHeroAnimation implements HeroAnimation {
       
       setTimeout(() => {
         word.classList.remove('opacity-0');
-        word.style.opacity = '1';
+        // word.style.opacity = '1';
       }, delay);
     });
   }
@@ -129,7 +129,7 @@ class RehabRepsHeroAnimation implements HeroAnimation {
       { name: 'RECOVER', description: 'Pain management and acute care', position: 25 },
       { name: 'REBUILD', description: 'Restore strength and mobility', position: 50 },
       { name: 'RELOAD', description: 'Sport-specific performance training', position: 75 },
-      { name: 'MAINTAIN', description: 'Ongoing wellness support', position: 100 }
+      { name: 'REVITALIZE', description: 'Ongoing wellness support', position: 100 }
     ];
 
     let currentPhase = 0;
@@ -404,7 +404,7 @@ class RehabRepsHeroAnimation implements HeroAnimation {
       { name: 'RECOVER', description: 'Pain management and acute care', position: 25 },
       { name: 'REBUILD', description: 'Restore strength and mobility', position: 50 },
       { name: 'RELOAD', description: 'Sport-specific performance training', position: 75 },
-      { name: 'MAINTAIN', description: 'Ongoing wellness support', position: 100 }
+      { name: 'REVITALIZE', description: 'Ongoing wellness support', position: 100 }
     ];
 
     const totalCycleTime = (3750 * 4) + 5250;
@@ -438,7 +438,7 @@ class RehabRepsHeroAnimation implements HeroAnimation {
       { name: 'RECOVER', description: 'Pain management and acute care', position: 25 },
       { name: 'REBUILD', description: 'Restore strength and mobility', position: 50 },
       { name: 'RELOAD', description: 'Sport-specific performance training', position: 75 },
-      { name: 'MAINTAIN', description: 'Ongoing wellness support', position: 100 }
+      { name: 'REVITALIZE', description: 'Ongoing wellness support', position: 100 }
     ];
 
     const nextPhase = (currentPhase + 1) % phases.length;
@@ -459,7 +459,7 @@ class RehabRepsHeroAnimation implements HeroAnimation {
       { name: 'RECOVER', description: 'Pain management and acute care', position: 25 },
       { name: 'REBUILD', description: 'Restore strength and mobility', position: 50 },
       { name: 'RELOAD', description: 'Sport-specific performance training', position: 75 },
-      { name: 'MAINTAIN', description: 'Ongoing wellness support', position: 100 }
+      { name: 'REVITALIZE', description: 'Ongoing wellness support', position: 100 }
     ];
 
     const phase = phases[phaseIndex];

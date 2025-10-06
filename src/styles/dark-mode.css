@@ -12,10 +12,14 @@
   --dark-text-secondary: #b0b0b0;
 }
 
-/* Body and Base Elements */
+/* Body and Base Elements - Optimized for smooth scrolling */
 .dark body {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #404040 100%);
+  background: #1a1a1a; /* Solid background prevents scroll jitter */
   color: var(--dark-text);
+  /* Additional scroll performance optimizations */
+  will-change: scroll-position;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 /* Navigation Dark Mode */
@@ -116,7 +120,7 @@
 
 .dark .border-rr-black:hover {
   background-color: var(--rr-yellow);
-  color: #1a1a1a;
+  color: #1a1a1a!important;
   border-color: var(--rr-yellow);
 }
 
@@ -251,24 +255,6 @@ footer,
   outline-offset: 2px;
 }
 
-/* Scrollbar Dark Mode */
-.dark::-webkit-scrollbar {
-  width: 8px;
-}
-
-.dark::-webkit-scrollbar-track {
-  background: var(--dark-bg);
-}
-
-.dark::-webkit-scrollbar-thumb {
-  background: var(--dark-surface);
-  border-radius: 4px;
-}
-
-.dark::-webkit-scrollbar-thumb:hover {
-  background: var(--rr-yellow);
-}
-
 /* Dark Mode Border Utilities */
 .dark .border-gray-200 {
   border-color: var(--dark-border) !important;
@@ -290,13 +276,53 @@ footer,
   color: #808080 !important;
 }
 
-/* About Page Dark Mode - High Specificity Overrides */
+/* OPTIMIZED GRADIENT OVERRIDES - Fixed position pseudo-elements for smooth scrolling */
 .dark section.page-header.bg-gradient-to-br.from-background-light.to-gray-50 {
-  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-surface) 100%) !important;
+  background: none !important;
+  position: relative;
+  z-index: 1;
+  isolation: isolate; /* Create new stacking context */
+}
+
+.dark section.page-header.bg-gradient-to-br.from-background-light.to-gray-50::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .dark section.mission-section.py-16.lg\:py-24.bg-gradient-to-br.from-gray-50.to-background-light {
-  background: linear-gradient(135deg, var(--dark-surface) 0%, var(--dark-bg) 100%) !important;
+  background: none !important;
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
+.dark section.mission-section.py-16.lg\:py-24.bg-gradient-to-br.from-gray-50.to-background-light::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .dark .mission-content.bg-white.rounded-2xl {
@@ -313,14 +339,54 @@ footer,
 }
 
 
-/* Additional high-specificity overrides for stubborn Tailwind classes */
+/* OPTIMIZED GRADIENT OVERRIDES - All Pages using fixed ::before pseudo-elements */
 .dark section.bg-gradient-to-br {
-  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-surface) 100%) !important;
+  background: none !important;
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
+.dark section.bg-gradient-to-br::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* Services Page CTA Section Dark Mode */
 .dark section.bg-gradient-to-br.from-gray-50.to-background-light {
-  background: linear-gradient(135deg, var(--dark-surface) 0%, var(--dark-bg) 100%) !important;
+  background: none !important;
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
+.dark section.bg-gradient-to-br.from-gray-50.to-background-light::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .dark .bg-white {
