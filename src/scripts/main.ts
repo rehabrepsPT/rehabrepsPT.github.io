@@ -86,6 +86,16 @@ class RehabRepsHeroAnimation implements HeroAnimation {
     );
 
     observer.observe(heroContent);
+
+    // Check if hero is already in viewport on page load
+    const heroRect = heroContent.getBoundingClientRect();
+    const isInViewport = heroRect.top < window.innerHeight && heroRect.bottom > 0;
+
+    if (isInViewport && !this.isAnimated) {
+      // Trigger animation immediately if already visible
+      this.triggerHeroAnimation();
+      this.isAnimated = true;
+    }
   }
 
   private triggerHeroAnimation(): void {
@@ -267,6 +277,9 @@ class RehabRepsHeroAnimation implements HeroAnimation {
   }
 
   private startCarousel(): void {
+    // Stop any existing carousel to prevent multiple intervals
+    this.stopCarousel();
+
     this.slideInterval = window.setInterval(() => {
       this.nextSlide();
     }, 4000);

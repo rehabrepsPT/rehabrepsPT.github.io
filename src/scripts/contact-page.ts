@@ -43,6 +43,7 @@ class ContactPageController implements ContactPageAnimations {
     this.resetAnimationStates();
     this.setupScrollAnimations();
     this.setupFormHandling();
+    this.setupMobileMenu();
   }
 
   private resetAnimationStates(): void {
@@ -300,6 +301,35 @@ class ContactPageController implements ContactPageAnimations {
       });
     });
   }
+
+  private setupMobileMenu(): void {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (!mobileMenuBtn || !mobileMenu) return;
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.contains('hidden');
+
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+
+      if (!mobileMenuBtn.contains(target) && !mobileMenu.contains(target)) {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 }
 
 // Initialize Contact page animations only if user doesn't prefer reduced motion
@@ -336,6 +366,33 @@ if (!prefersReducedMotion) {
     const footerPlaceholder = document.getElementById('footer-placeholder');
     if (footerPlaceholder) {
       footerPlaceholder.innerHTML = createFooter();
+    }
+
+    // Setup mobile menu for reduced motion users
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          mobileMenu.classList.add('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+
+        if (!mobileMenuBtn.contains(target) && !mobileMenu.contains(target)) {
+          mobileMenu.classList.add('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
     }
   });
 }

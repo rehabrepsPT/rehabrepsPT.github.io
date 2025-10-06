@@ -43,6 +43,7 @@ class AboutPageController implements AboutPageAnimations {
     this.resetAnimationStates();
     this.setupScrollAnimations();
     this.setupValueCardAnimations();
+    this.setupMobileMenu();
   }
 
   private resetAnimationStates(): void {
@@ -190,12 +191,12 @@ class AboutPageController implements AboutPageAnimations {
   private animateCardHover(card: Element, isHover: boolean): void {
     const icon = card.querySelector('.value-icon');
     const title = card.querySelector('h3');
-    
+
     if (icon && title) {
       // Set explicit transition for smooth hover animations
       (icon as HTMLElement).style.transition = 'transform 0.3s ease';
       (title as HTMLElement).style.transition = 'color 0.3s ease';
-      
+
       if (isHover) {
         (icon as HTMLElement).style.transform = 'scale(1.1) rotate(5deg)';
         (title as HTMLElement).style.color = '#ffe400';
@@ -204,6 +205,35 @@ class AboutPageController implements AboutPageAnimations {
         (title as HTMLElement).style.color = '#000000';
       }
     }
+  }
+
+  private setupMobileMenu(): void {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (!mobileMenuBtn || !mobileMenu) return;
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.contains('hidden');
+
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+
+      if (!mobileMenuBtn.contains(target) && !mobileMenu.contains(target)) {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
 }
@@ -229,6 +259,44 @@ if (!prefersReducedMotion) {
         (el as HTMLElement).style.transform = 'none';
       });
     });
+
+    // Still inject components for reduced motion users
+    const navPlaceholder = document.getElementById('nav-placeholder');
+    if (navPlaceholder) {
+      navPlaceholder.innerHTML = createNavigation('about');
+    }
+
+    const footerPlaceholder = document.getElementById('footer-placeholder');
+    if (footerPlaceholder) {
+      footerPlaceholder.innerHTML = createFooter();
+    }
+
+    // Setup mobile menu for reduced motion users
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          mobileMenu.classList.add('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+
+        if (!mobileMenuBtn.contains(target) && !mobileMenu.contains(target)) {
+          mobileMenu.classList.add('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
   });
 }
 
