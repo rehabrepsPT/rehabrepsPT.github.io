@@ -24,6 +24,7 @@ class RehabRepsHeroAnimation implements HeroAnimation {
 
   constructor() {
     this.themeManager = new RehabRepsThemeManager();
+    this.injectComponents();
     this.init();
   }
 
@@ -45,11 +46,9 @@ class RehabRepsHeroAnimation implements HeroAnimation {
     // Wait for DOM to be fully loaded
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
-        this.injectComponents();
         this.setupAnimations();
       });
     } else {
-      this.injectComponents();
       this.setupAnimations();
     }
   }
@@ -536,15 +535,13 @@ class RehabRepsHeroAnimation implements HeroAnimation {
   }
 }
 
-// Performance optimizations
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// Initialize homepage - works for both normal and reduced motion users
+const rehabRepsInstance = new RehabRepsHeroAnimation();
+(window as any).rehabRepsInstance = rehabRepsInstance;
 
-if (!prefersReducedMotion) {
-  // Initialize animations only if user doesn't prefer reduced motion
-  const rehabRepsInstance = new RehabRepsHeroAnimation();
-  (window as any).rehabRepsInstance = rehabRepsInstance;
-} else {
-  // Fallback for reduced motion users
+// If reduced motion is preferred, make hero content visible immediately
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (prefersReducedMotion) {
   document.addEventListener('DOMContentLoaded', () => {
     const heroContent = document.querySelector('.hero-content');
     const heroImage = document.querySelector('.hero-image-container');
@@ -553,15 +550,6 @@ if (!prefersReducedMotion) {
       heroContent.classList.add('animate-in');
       heroImage.classList.add('animate-in');
     }
-
-    // Still enable mobile menu and carousel
-    const animation = new RehabRepsHeroAnimation();
-    // Wait a tick for DOM to fully update after component injection
-    setTimeout(() => {
-      animation.setupMobileMenu();
-      animation.setupCarousel();
-    }, 0);
-    (window as any).rehabRepsInstance = animation;
   });
 }
 
