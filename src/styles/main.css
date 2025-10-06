@@ -18,69 +18,6 @@
   box-sizing: border-box;
 }
 
-/* Theme loading transition to prevent flash */
-.theme-loading {
-  transition: none !important;
-}
-
-.theme-loading * {
-  transition: none !important;
-}
-
-/* Smooth theme transitions after loading */
-html:not(.theme-loading) {
-  transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-html:not(.theme-loading) * {
-  transition: 
-    background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Exclude progress elements from global transitions */
-html:not(.theme-loading) .progress-fill,
-html:not(.theme-loading) .progress-dot {
-  transition: none; /* Let specific CSS rules handle these */
-}
-
-html:not(.theme-loading) .value-icon {
-  transition: none; /* Let hover JavaScript handle these */
-}
-
-/* CRITICAL: Exclude all gradient elements from global transitions for smooth scrolling
-html:not(.theme-loading) .bg-gradient-to-br,
-html:not(.theme-loading) .smooth-gradient,
-html:not(.theme-loading) .page-header,
-html:not(.theme-loading) .mission-section,
-html:not(.theme-loading) section[class*="bg-gradient"] {
-  transition: none !important;
-} */
-
-/* Loading overlay for smooth page transitions */
-.page-loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--background-light);
-  z-index: 9999;
-  opacity: 1;
-  transition: opacity 0.3s ease-out;
-  pointer-events: none;
-}
-
-.dark .page-loading {
-  background-color: #1a1a1a;
-}
-
-.page-loading.fade-out {
-  opacity: 0;
-}
-
 /* About page bio content initial state */
 .bio-content {
   opacity: 0;
@@ -159,12 +96,6 @@ html {
 /* Navigation enhancements */
 nav {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Focus states for accessibility */
-a:focus, button:focus {
-  outline: 2px solid var(--rr-yellow);
-  outline-offset: 2px;
 }
 
 

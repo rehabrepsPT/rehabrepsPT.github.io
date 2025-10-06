@@ -178,11 +178,11 @@ class AboutPageController implements AboutPageAnimations {
     
     valueCards.forEach(card => {
       card.addEventListener('mouseenter', () => {
-        this.animateCardHover(card, true);
+        this.animateMethodHover(card, true);
       });
       
       card.addEventListener('mouseleave', () => {
-        this.animateCardHover(card, false);
+        this.animateMethodHover(card, false);
       });
     });
   }

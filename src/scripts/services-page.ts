@@ -292,11 +292,11 @@ class ServicesPageController implements ServicesPageAnimations {
     // Add hover effects to service cards
     serviceCards.forEach(card => {
       card.addEventListener('mouseenter', () => {
-        this.animateCardHover(card, true);
+        this.animateMethodHover(card, true);
       });
       
       card.addEventListener('mouseleave', () => {
-        this.animateCardHover(card, false);
+        this.animateMethodHover(card, false);
       });
     });
 

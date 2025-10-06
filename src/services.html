@@ -3,8 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="your-verification-code" />
   <title>Services - Rehab Reps Physical Therapy</title>
   <meta name="description" content="Comprehensive physical therapy services including sport and orthopedic therapy, performance training, and specialized treatment methods in Jacksonville, FL." />
+
+  <!-- Open Graph meta tags -->
+  <meta property="og:title" content="Physical Therapy Services - Rehab Reps Physical Therapy" />
+  <meta property="og:description" content="Comprehensive physical therapy services including sport and orthopedic therapy, performance training, and specialized treatment methods in Jacksonville, FL." />
+  <meta property="og:image" content="https://rehabrepsphysicaltherapy.com/images/room1.png" />
+  <meta property="og:url" content="https://rehabrepsphysicaltherapy.com/services/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Rehab Reps Physical Therapy" />
+
+  <!-- Twitter Card meta tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Physical Therapy Services - Rehab Reps Physical Therapy" />
+  <meta name="twitter:description" content="Comprehensive physical therapy services including sport and orthopedic therapy, performance training, and specialized treatment methods in Jacksonville, FL." />
+  <meta name="twitter:image" content="https://rehabrepsphysicaltherapy.com/images/room1.png" />
   
   <!-- Immediate theme preload to prevent flash -->
   <script>
@@ -39,7 +54,6 @@
   <!-- Preload critical resources -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 </head>
-<body class="bg-background-light">
   
   <!-- Loading overlay to prevent flash -->
   <div id="page-loading" class="page-loading"></div>
@@ -48,7 +62,7 @@
   <div id="nav-placeholder"></div>
 
   <!-- Page Header -->
-  <section class="page-header bg-gradient-to-br from-background-light to-gray-50 smooth-gradient pt-24 pb-16">
+  <section class="bg-white pt-24 pb-16">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-rr-black mb-4 leading-tight page-title-animate">
@@ -184,7 +198,7 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl lg:text-4xl font-bold text-rr-black mb-4 treatment-section-title opacity-0">
-          How We Treat
+          How We <span class="text-rr-yellow">Treat</span>
         </h2>
         <p class="text-lg text-gray-700 max-w-2xl mx-auto treatment-section-subtitle opacity-0">
           Evidence-based treatment approaches tailored to your specific needs and recovery goals.
@@ -204,9 +218,8 @@
         
         <div class="treatment-method bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-100 dark:border-white hover:shadow-lg transition-all duration-300">
           <div class="w-12 h-12 bg-rr-yellow/20 rounded-lg flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-rr-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"></path>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15M9 12l3 3m0 0 3-3m-3 3V2.25" />
             </svg>
           </div>
           <h3 class="text-lg font-semibold text-rr-black mb-2">Dry Needling</h3>
@@ -323,7 +336,7 @@
   </section>
 
   <!-- Call to Action Section -->
-  <section class="py-20 bg-gradient-to-br from-gray-50 to-background-light smooth-gradient text-rr-black dark:text-white">
+  <section class="py-20 hero-section text-rr-black dark:text-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="cta-content opacity-0">
         <h2 class="text-3xl lg:text-4xl font-bold mb-6">
@@ -356,6 +369,4 @@
   <!-- Scripts -->
   <script type="module" src="/scripts/theme-manager.ts"></script>
   <script type="module" src="/scripts/services-page.ts"></script>
-  
-</body>
 </html>
