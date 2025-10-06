@@ -114,7 +114,19 @@ class ServicesPageController implements ServicesPageAnimations {
 
     elementsToObserve.forEach(selector => {
       const elements = document.querySelectorAll(selector);
-      elements.forEach(el => observer.observe(el));
+      elements.forEach(el => {
+        observer.observe(el);
+
+        // Check if element is already in viewport on page load
+        const rect = el.getBoundingClientRect();
+        const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+        const animationId = el.className.replace(/\s+/g, '-');
+
+        if (isInViewport && !this.isAnimated.has(animationId)) {
+          this.triggerAnimation(el);
+          this.isAnimated.add(animationId);
+        }
+      });
     });
   }
 

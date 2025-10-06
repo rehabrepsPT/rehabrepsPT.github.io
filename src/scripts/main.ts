@@ -24,7 +24,6 @@ class RehabRepsHeroAnimation implements HeroAnimation {
 
   constructor() {
     this.themeManager = new RehabRepsThemeManager();
-    this.injectComponents();
     this.init();
   }
 
@@ -46,9 +45,11 @@ class RehabRepsHeroAnimation implements HeroAnimation {
     // Wait for DOM to be fully loaded
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
+        this.injectComponents();
         this.setupAnimations();
       });
     } else {
+      this.injectComponents();
       this.setupAnimations();
     }
   }
