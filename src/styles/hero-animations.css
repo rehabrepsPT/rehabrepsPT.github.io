@@ -1,0 +1,328 @@
+/* Hero Section Animations */
+
+/* Geometric Background Shapes */
+.geometric-shape {
+  pointer-events: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255, 228, 0, 0.1), rgba(255, 228, 0, 0.05));
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 120px;
+  height: 120px;
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+  transform: rotate(45deg);
+}
+
+.shape-2 {
+  width: 80px;
+  height: 80px;
+  top: 55%;
+  right: 8%;
+  animation-delay: 2s;
+  transform: rotate(-30deg);
+}
+
+.shape-3 {
+  width: 160px;
+  height: 160px;
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 4s;
+  transform: rotate(15deg);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(var(--initial-rotation, 0deg));
+  }
+  33% {
+    transform: translate(20px, -20px) rotate(calc(var(--initial-rotation, 0deg) + 10deg));
+  }
+  66% {
+    transform: translate(-15px, 15px) rotate(calc(var(--initial-rotation, 0deg) - 10deg));
+  }
+}
+
+/* Floating Particles */
+.particles-container {
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #ffe400;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: particleFloat 8s linear infinite;
+}
+
+.particle-1 {
+  top: 15%;
+  left: 25%;
+  animation-delay: 0s;
+  animation-duration: 8s;
+}
+
+.particle-2 {
+  top: 40%;
+  left: 70%;
+  animation-delay: 1.5s;
+  animation-duration: 10s;
+}
+
+.particle-3 {
+  top: 70%;
+  left: 15%;
+  animation-delay: 3s;
+  animation-duration: 9s;
+}
+
+.particle-4 {
+  top: 25%;
+  left: 85%;
+  animation-delay: 4.5s;
+  animation-duration: 7s;
+}
+
+.particle-5 {
+  top: 85%;
+  left: 45%;
+  animation-delay: 6s;
+  animation-duration: 11s;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0px) translateX(0px) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-30px) translateX(20px) scale(1);
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-60px) translateX(-10px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Hero Content Animations */
+.hero-section {
+  background: linear-gradient(135deg, rgba(248,249,250,1) 0%, rgba(248,249,250,0.95) 100%);
+  position: relative;
+}
+
+/* Kinetic Typography */
+.hero-word {
+  display: inline-block;
+  animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) translateZ(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) translateZ(0);
+  }
+}
+
+/* Performance Metrics Animation */
+.metric-fill {
+  width: 0%;
+  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: linear-gradient(90deg, #ffe400 0%, #ffd700 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+/* Carousel Animations */
+.carousel-slide {
+  display: none;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.carousel-slide.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.carousel-indicators .indicator {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel-indicators .indicator:hover {
+  transform: scale(1.2);
+}
+
+.carousel-indicators .indicator.active {
+  background-color: #ffe400 !important;
+  transform: scale(1.1);
+}
+
+/* Responsive Hover Effects */
+/* @media (hover: hover) {
+  .particle {
+    transition: all 0.3s ease;
+  }
+  
+  .hero-section:hover .particle {
+    animation-play-state: paused;
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  
+  .geometric-shape {
+    transition: all 0.3s ease;
+  }
+  
+  .hero-section:hover .geometric-shape {
+    transform: scale(1.05) rotate(calc(var(--initial-rotation, 0deg) + 5deg));
+  }
+} */
+
+/* Performance Optimizations */
+.hero-bg-animation {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.particle, .geometric-shape {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Entry Animations with Intersection Observer */
+.hero-content > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-content.animate-in > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-content.animate-in .hero-description {
+  transition-delay: 0.3s;
+}
+
+.hero-content.animate-in .rehabilitation-progress {
+  transition-delay: 0.6s;
+}
+
+.hero-content.animate-in .hero-cta {
+  transition-delay: 0.9s;
+}
+
+.hero-image-container {
+  transform: translateX(50px);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-image-container.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Athletic pulse effect for CTA buttons */
+/* .hero-cta a {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 228, 0, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: -1;
+}
+
+.hero-cta a:hover::before {
+  width: 120%;
+  height: 120%;
+} */
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .geometric-shape {
+    opacity: 0.3;
+  }
+  
+  .particle {
+    display: none;
+  }
+  
+  .hero-word {
+    font-size: 2.5rem;
+  }
+  
+  .rehabilitation-progress {
+    margin: 2rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .geometric-shape {
+    opacity: 0.2;
+    transform: scale(0.7);
+  }
+  
+  .shape-1 { width: 80px; height: 80px; }
+  .shape-2 { width: 60px; height: 60px; }
+  .shape-3 { width: 100px; height: 100px; }
+}

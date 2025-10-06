@@ -1,0 +1,325 @@
+/* Dark Mode Styles */
+
+/* Root Dark Mode Variables */
+:root.dark {
+  --rr-yellow: #ffe400;
+  --rr-black: #f5f5f5;
+  --background-light: #1a1a1a;
+  --dark-bg: #1a1a1a;
+  --dark-surface: #242424;
+  --dark-border: #333333;
+  --dark-text: #f5f5f5;
+  --dark-text-secondary: #b0b0b0;
+}
+
+/* Body and Base Elements - Optimized for smooth scrolling */
+.dark body {
+  background: #1a1a1a; /* Solid background prevents scroll jitter */
+  color: var(--dark-text);
+  /* Additional scroll performance optimizations */
+  will-change: scroll-position;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* Navigation Dark Mode */
+.dark nav {
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.dark .navbar-brand span {
+  color: var(--dark-text) !important;
+}
+
+.dark .nav-link {
+  color: var(--dark-text) !important;
+}
+
+.dark .nav-link:hover {
+  color: var(--rr-yellow) !important;
+}
+
+/* Ensure all navigation text is light colored in dark mode */
+.dark nav * {
+  color: var(--dark-text);
+}
+
+.dark nav a {
+  color: var(--dark-text) !important;
+}
+
+.dark nav span {
+  color: var(--dark-text) !important;
+}
+
+.dark .text-rr-black {
+  color: var(--dark-text) !important;
+}
+
+/* Mobile menu dark mode text */
+.dark #mobile-menu span {
+  color: var(--dark-text) !important;
+}
+
+/* Hero Section Dark Mode */
+.dark .hero-section {
+  background: linear-gradient(135deg, #1a1a1a 0%, #242424 50%, #2d2d2d 100%);
+}
+
+.dark .hero-title {
+  color: var(--dark-text);
+}
+
+.dark .hero-title .text-rr-yellow {
+  color: var(--rr-yellow);
+}
+
+.dark .hero-description {
+  color: var(--dark-text-secondary);
+}
+
+/* Performance Metrics Dark Mode */
+.dark .metric-bar {
+  background-color: var(--dark-border);
+}
+
+.dark .metric-fill {
+  background: linear-gradient(90deg, var(--rr-yellow) 0%, #ffd700 100%);
+}
+
+.dark .performance-metrics span {
+  color: var(--dark-text-secondary);
+}
+
+/* Buttons Dark Mode */
+.dark .bg-rr-black {
+  background-color: var(--rr-yellow);
+  color: #1a1a1a;
+}
+
+.dark .bg-rr-black:hover {
+  background-color: var(--dark-text);
+  color: #1a1a1a;
+}
+
+/* High specificity override for Book Appointment button */
+.dark .bg-rr-black.text-white {
+  color: #1a1a1a !important;
+}
+
+.dark .bg-rr-black.text-white:hover {
+  color: #1a1a1a !important;
+}
+
+.dark .border-rr-black {
+  border-color: var(--dark-border);
+  color: var(--dark-text);
+}
+
+.dark .border-rr-black:hover {
+  background-color: var(--rr-yellow);
+  color: #1a1a1a!important;
+  border-color: var(--rr-yellow);
+}
+
+/* Image Container Dark Mode */
+.dark .carousel-container {
+  background-color: var(--dark-surface);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.dark .carousel-indicators .indicator {
+  background-color: rgba(245, 245, 245, 0.3);
+}
+
+.dark .carousel-indicators .indicator.active {
+  background-color: var(--rr-yellow);
+}
+
+/* Footer Dark Mode */
+.dark footer {
+  background: var(--dark-surface);
+}
+
+.dark footer h4,
+.dark footer h5 {
+  color: var(--dark-text);
+}
+
+.dark footer p,
+.dark footer a {
+  color: var(--dark-text-secondary);
+}
+
+.dark footer a:hover {
+  color: var(--rr-yellow);
+}
+
+.dark .bg-gray-200 {
+  background-color: var(--dark-border) !important;
+}
+
+.dark .bg-gray-200:hover {
+  background-color: var(--rr-yellow) !important;
+  color: #1a1a1a !important;
+}
+
+/* Geometric Shapes Dark Mode */
+.dark .geometric-shape {
+  background: linear-gradient(135deg, rgba(255, 228, 0, 0.15), rgba(255, 228, 0, 0.08));
+  border: 1px solid rgba(255, 228, 0, 0.1);
+}
+
+/* Particles Dark Mode */
+.dark .particle {
+  background: var(--rr-yellow);
+  box-shadow: 0 0 10px rgba(255, 228, 0, 0.3);
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-btn:hover {
+  background-color: rgba(255, 228, 0, 0.1);
+  transform: scale(1.05);
+}
+
+.dark .theme-toggle-btn:hover {
+  background-color: rgba(255, 228, 0, 0.15);
+}
+
+.theme-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.dark .theme-toggle-btn svg {
+  color: var(--dark-text);
+}
+
+/* Mobile Menu Dark Mode */
+.dark #mobile-menu {
+  background-color: var(--dark-surface);
+  border-top: 1px solid var(--dark-border);
+}
+
+.dark #mobile-menu a {
+  color: var(--dark-text);
+}
+
+.dark #mobile-menu a:hover {
+  color: var(--rr-yellow);
+}
+
+
+/* Dark Mode Performance Optimizations */
+.dark * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus States Dark Mode */
+/* .dark a:focus,
+.dark button:focus {
+  outline: 2px solid var(--rr-yellow);
+  outline-offset: 2px;
+} */
+
+/* Dark Mode Border Utilities */
+.dark .border-gray-200 {
+  border-color: var(--dark-border) !important;
+}
+
+.dark .bg-white {
+  background-color: var(--dark-surface) !important;
+}
+
+.dark .text-gray-700 {
+  color: var(--dark-text-secondary) !important;
+}
+
+.dark .text-gray-600 {
+  color: var(--dark-text-secondary) !important;
+}
+
+.dark .text-gray-500 {
+  color: #808080 !important;
+}
+
+.dark .mission-content.bg-white.rounded-2xl {
+  background-color: var(--dark-surface) !important;
+  border: 1px solid var(--dark-border);
+}
+
+.dark .mission-title {
+  color: var(--dark-text) !important;
+}
+
+.dark .mission-title .text-rr-yellow {
+  color: var(--rr-yellow) !important;
+}
+
+.dark .bg-white {
+  background-color: var(--dark-surface) !important;
+}
+
+.dark .hero-bio {
+  background-color: var(--dark-bg);
+}
+
+.dark .values-section {
+  background-color: var(--dark-bg);
+}
+
+.dark .value-card {
+  background-color: var(--dark-surface) !important;
+  border: 1px solid var(--dark-border);
+}
+
+.dark .value-card:hover {
+  background-color: var(--dark-gradient-mid) !important;
+  transform: translateY(-5px);
+}
+
+/* Bio section dark mode */
+.dark .bio-content h2 {
+  color: var(--dark-text) !important;
+}
+
+.dark .bio-text p {
+  color: var(--dark-text-secondary) !important;
+}
+
+/* Dark Mode Animation Enhancements */
+.dark .hero-cta a::before {
+  background: rgba(255, 228, 0, 0.2);
+}
+
+.dark .metric-fill::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+}
+
+/* Reduced Motion Dark Mode */
+@media (prefers-reduced-motion: reduce) {
+  .dark *,
+  .dark *::before,
+  .dark *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

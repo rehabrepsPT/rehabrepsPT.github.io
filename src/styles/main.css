@@ -1,0 +1,123 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import './hero-animations.css';
+@import './dark-mode.css';
+@import './rehabilitation-timeline.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Custom base styles */
+:root {
+  --rr-yellow: #ffe400;
+  --rr-black: #000000;
+  --background-light: rgb(248,249,250);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* About page bio content initial state */
+.bio-content {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+/* Services page initial states */
+.page-title-animate {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.page-subtitle-animate {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.treatment-section-title {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.treatment-section-subtitle {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.office-gallery {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.service-benefits {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.cta-content {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Services page specific styling */
+.geometric-shape {
+  background: linear-gradient(135deg, rgba(255, 228, 0, 0.1), rgba(255, 228, 0, 0.05));
+  border-radius: 8px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--background-light);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* High performance animations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom button hover effects */
+.btn-hover-yellow:hover {
+  background-color: var(--rr-yellow);
+  color: var(--rr-black);
+}
+
+/* Navigation enhancements */
+nav {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+
+/* Loading states */
+.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .particle {
+    display: none;
+  }
+  
+  .geometric-shape {
+    animation: none;
+  }
+}
