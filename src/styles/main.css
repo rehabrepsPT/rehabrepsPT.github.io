@@ -105,6 +105,11 @@ nav {
   opacity: 0.7;
 }
 
+/* Mobile navigation active state */
+nav a.text-rr-yellow {
+  color: var(--rr-yellow) !important;
+}
+
 /* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -112,11 +117,11 @@ nav {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   .particle {
     display: none;
   }
-  
+
   .geometric-shape {
     animation: none;
   }

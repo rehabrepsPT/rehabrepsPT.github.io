@@ -547,7 +547,7 @@ if (!prefersReducedMotion) {
   document.addEventListener('DOMContentLoaded', () => {
     const heroContent = document.querySelector('.hero-content');
     const heroImage = document.querySelector('.hero-image-container');
-    
+
     if (heroContent && heroImage) {
       heroContent.classList.add('animate-in');
       heroImage.classList.add('animate-in');
@@ -555,8 +555,11 @@ if (!prefersReducedMotion) {
 
     // Still enable mobile menu and carousel
     const animation = new RehabRepsHeroAnimation();
-    animation.setupMobileMenu();
-    animation.setupCarousel();
+    // Wait a tick for DOM to fully update after component injection
+    setTimeout(() => {
+      animation.setupMobileMenu();
+      animation.setupCarousel();
+    }, 0);
     (window as any).rehabRepsInstance = animation;
   });
 }
