@@ -59,21 +59,3 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
-
-  # Preview job for PRs
-  preview:
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.event_name == 'pull_request'
-    
-    steps:
-    - name: Comment PR
-      uses: actions/github-script@v7
-      with:
-        script: |
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: '🚀 **Preview Build Complete!**\n\nYour changes have been built successfully. The build artifacts are available for download from the build job above.\n\n*Note: This is a preview build for testing. The main site will be updated when this PR is merged.*'
-          })
