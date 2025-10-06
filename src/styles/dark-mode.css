@@ -50,6 +50,10 @@
   color: var(--dark-text) !important;
 }
 
+.dark nav a.text-rr-yellow {
+  color: var(--rr-yellow) !important;
+}
+
 .dark nav span {
   color: var(--dark-text) !important;
 }

@@ -298,9 +298,10 @@ class RehabRepsHeroAnimation implements HeroAnimation {
 
     if (!mobileMenuBtn || !mobileMenu) return;
 
-    mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent event from bubbling to document
       const isHidden = mobileMenu.classList.contains('hidden');
-      
+
       if (isHidden) {
         mobileMenu.classList.remove('hidden');
         mobileMenuBtn.setAttribute('aria-expanded', 'true');
@@ -313,7 +314,7 @@ class RehabRepsHeroAnimation implements HeroAnimation {
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
-      
+
       if (!mobileMenuBtn.contains(target) && !mobileMenu.contains(target)) {
         mobileMenu.classList.add('hidden');
         mobileMenuBtn.setAttribute('aria-expanded', 'false');

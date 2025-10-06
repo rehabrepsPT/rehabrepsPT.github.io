@@ -4,9 +4,9 @@ export function createNavigation(currentPage: string): string {
     'text-rr-black font-semibold border-b-2 border-rr-yellow' : 
     'text-gray-700 hover:text-rr-black transition-colors duration-200 font-medium';
 
-  const isMobileActive = (page: string) => currentPage === page ? 
-    'text-rr-black font-semibold' : 
-    'text-rr-black hover:text-gray-600 font-medium py-2';
+  const isMobileActive = (page: string) => currentPage === page ?
+    'block text-rr-yellow font-semibold py-2 px-3 rounded-lg' :
+    'block text-rr-black hover:text-gray-600 hover:bg-gray-50 font-medium py-2 px-3 rounded-lg transition-colors duration-200';
 
   return `
   <!-- Navigation -->
@@ -44,13 +44,13 @@ export function createNavigation(currentPage: string): string {
     
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="lg:hidden hidden bg-white/95 backdrop-blur-sm border-t border-gray-200">
-      <div class="px-4 py-6 space-y-4">
+      <div class="px-4 py-6 flex flex-col space-y-2">
         <a href="/" class="${isMobileActive('home')}">Home</a>
         <a href="/about.html" class="${isMobileActive('about')}">About</a>
         <a href="/services.html" class="${isMobileActive('services')}">Services</a>
         <a href="/contact.html" class="${isMobileActive('contact')}">Contact</a>
-        
-        <a href="https://rehabreps.janeapp.com/" class="block bg-rr-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 font-medium text-center">
+
+        <a href="https://rehabreps.janeapp.com/" class="block bg-rr-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 font-medium text-center mt-4">
           Book Appointment
         </a>
       </div>

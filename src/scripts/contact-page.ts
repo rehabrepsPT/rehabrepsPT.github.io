@@ -308,7 +308,8 @@ class ContactPageController implements ContactPageAnimations {
 
     if (!mobileMenuBtn || !mobileMenu) return;
 
-    mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent event from bubbling to document
       const isHidden = mobileMenu.classList.contains('hidden');
 
       if (isHidden) {
@@ -373,7 +374,8 @@ if (!prefersReducedMotion) {
     const mobileMenu = document.getElementById('mobile-menu');
 
     if (mobileMenuBtn && mobileMenu) {
-      mobileMenuBtn.addEventListener('click', () => {
+      mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent event from bubbling to document
         const isHidden = mobileMenu.classList.contains('hidden');
 
         if (isHidden) {
