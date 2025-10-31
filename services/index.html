@@ -24,20 +24,9 @@
   <!-- Immediate theme preload to prevent flash -->
   <script>
     (function() {
-      const savedTheme = localStorage.getItem('rr-theme');
-      const theme = savedTheme || 'system';
-      let isDark = false;
-      
-      if (theme === 'dark') {
-        isDark = true;
-      } else if (theme === 'system') {
-        isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      }
+      // Always use dark theme
+      document.documentElement.classList.add('dark');
 
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-      }
-      
       // Add loading class to prevent flash
       document.documentElement.classList.add('theme-loading');
     })();
@@ -52,10 +41,10 @@
   
   <!-- Preload critical resources -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <script type="module" crossorigin src="/assets/services-B2UnOVCI.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/footer-HtNolAr_.js">
-  <link rel="modulepreload" crossorigin href="/assets/theme-manager-DXbOHQa8.js">
-  <link rel="stylesheet" crossorigin href="/assets/footer-CE8TmZ95.css">
+  <script type="module" crossorigin src="/assets/services-DnQn8Rti.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/footer-x56GbJ4s.js">
+  <link rel="modulepreload" crossorigin href="/assets/theme-manager-DwXk5MiP.js">
+  <link rel="stylesheet" crossorigin href="/assets/footer-C2LF5BPx.css">
   <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();if(location.protocol!="file:"){window.__vite_is_modern_browser=true}</script>
   <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
 </head>
@@ -358,7 +347,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </a>
-          <a href="/contact.html" class="inline-flex items-center justify-center border-2 border-rr-black text-rr-black px-8 py-4 rounded-lg hover:bg-rr-black hover:text-white transition-all duration-300 font-medium text-lg">
+          <a href="/contact/" class="inline-flex items-center justify-center border-2 border-rr-black text-rr-black px-8 py-4 rounded-lg hover:bg-rr-black hover:text-white transition-all duration-300 font-medium text-lg">
             Contact Us
             <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -375,6 +364,6 @@
   <!-- Scripts -->
   <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
   <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-CEmpoV49.js"></script>
-  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/services-legacy-Xp1rEtHC.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/services-legacy-BveXJYsj.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
 </body>
 </html>
