@@ -65,20 +65,9 @@
   <!-- Immediate theme preload to prevent flash -->
   <script>
     (function() {
-      const savedTheme = localStorage.getItem('rr-theme');
-      const theme = savedTheme || 'system';
-      let isDark = false;
-      
-      if (theme === 'dark') {
-        isDark = true;
-      } else if (theme === 'system') {
-        isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      }
+      // Always use dark theme
+      document.documentElement.classList.add('dark');
 
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-      }
-      
       // Add loading class to prevent flash
       document.documentElement.classList.add('theme-loading');
     })();
@@ -170,10 +159,10 @@
             
             <!-- CTA buttons -->
             <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center lg:justify-start opacity-0">
-              <a href="/about.html" class="bg-rr-black text-white px-8 py-4 rounded-lg hover:bg-rr-yellow hover:text-rr-black transition-all duration-300 font-medium text-center">
+              <a href="/about/" class="bg-rr-black text-white px-8 py-4 rounded-lg hover:bg-rr-yellow hover:text-rr-black transition-all duration-300 font-medium text-center">
                 About Us
               </a>
-              <a href="/contact.html" class="border-2 border-rr-black text-rr-black px-8 py-4 rounded-lg hover:bg-rr-black hover:text-rr-black!important transition-all duration-300 font-medium text-center flex items-center justify-center">
+              <a href="/contact/" class="border-2 border-rr-black text-rr-black px-8 py-4 rounded-lg hover:bg-rr-black hover:text-rr-black!important transition-all duration-300 font-medium text-center flex items-center justify-center">
                 Get Started
                 <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>

@@ -33,10 +33,10 @@ export function createFooter(): string {
           <h5 class="font-semibold text-rr-black mb-4">Links</h5>
           <ul class="space-y-2">
             <li><a href="/" class="text-sm text-gray-600 hover:text-rr-yellow transition-colors">Home</a></li>
-            <li><a href="/about.html" class="text-sm text-gray-600 hover:text-rr-yellow transition-colors">About</a></li>
-            <li><a href="/services.html" class="text-sm text-gray-600 hover:text-rr-yellow transition-colors">Services</a></li>
-            <li><a href="/contact.html" class="text-sm text-gray-600 hover:text-rr-yellow transition-colors">Contact Us</a></li>
-            <li><a href="/contact.html#newsletter" class="text-sm text-gray-600 hover:text-rr-yellow transition-colors">Join Newsletter</a></li>
+            <li><a href="/about/" class="text-sm text-gray-600 hover:text-rr-yellow transition-colors">About</a></li>
+            <li><a href="/services/" class="text-sm text-gray-600 hover:text-rr-yellow transition-colors">Services</a></li>
+            <li><a href="/contact/" class="text-sm text-gray-600 hover:text-rr-yellow transition-colors">Contact Us</a></li>
+            <li><a href="/contact/#newsletter" class="text-sm text-gray-600 hover:text-rr-yellow transition-colors">Join Newsletter</a></li>
           </ul>
         </div>
         

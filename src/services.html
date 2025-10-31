@@ -24,20 +24,9 @@
   <!-- Immediate theme preload to prevent flash -->
   <script>
     (function() {
-      const savedTheme = localStorage.getItem('rr-theme');
-      const theme = savedTheme || 'system';
-      let isDark = false;
-      
-      if (theme === 'dark') {
-        isDark = true;
-      } else if (theme === 'system') {
-        isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      }
+      // Always use dark theme
+      document.documentElement.classList.add('dark');
 
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-      }
-      
       // Add loading class to prevent flash
       document.documentElement.classList.add('theme-loading');
     })();
@@ -353,7 +342,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </a>
-          <a href="/contact.html" class="inline-flex items-center justify-center border-2 border-rr-black text-rr-black px-8 py-4 rounded-lg hover:bg-rr-black hover:text-white transition-all duration-300 font-medium text-lg">
+          <a href="/contact/" class="inline-flex items-center justify-center border-2 border-rr-black text-rr-black px-8 py-4 rounded-lg hover:bg-rr-black hover:text-white transition-all duration-300 font-medium text-lg">
             Contact Us
             <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>

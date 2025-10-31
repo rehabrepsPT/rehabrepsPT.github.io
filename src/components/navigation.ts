@@ -23,9 +23,9 @@ export function createNavigation(currentPage: string): string {
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex items-center space-x-8">
           <a href="/" class="${isActive('home')}">Home</a>
-          <a href="/about.html" class="${isActive('about')}">About</a>
-          <a href="/services.html" class="${isActive('services')}">Services</a>
-          <a href="/contact.html" class="${isActive('contact')}">Contact</a>
+          <a href="/about/" class="${isActive('about')}">About</a>
+          <a href="/services/" class="${isActive('services')}">Services</a>
+          <a href="/contact/" class="${isActive('contact')}">Contact</a>
           
           <!-- CTA Button -->
           <a href="https://rehabreps.janeapp.com/" class="bg-rr-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 font-medium">
@@ -46,9 +46,9 @@ export function createNavigation(currentPage: string): string {
     <div id="mobile-menu" class="lg:hidden hidden bg-white/95 backdrop-blur-sm border-t border-gray-200">
       <div class="px-4 py-6 flex flex-col space-y-2">
         <a href="/" class="${isMobileActive('home')}">Home</a>
-        <a href="/about.html" class="${isMobileActive('about')}">About</a>
-        <a href="/services.html" class="${isMobileActive('services')}">Services</a>
-        <a href="/contact.html" class="${isMobileActive('contact')}">Contact</a>
+        <a href="/about/" class="${isMobileActive('about')}">About</a>
+        <a href="/services/" class="${isMobileActive('services')}">Services</a>
+        <a href="/contact/" class="${isMobileActive('contact')}">Contact</a>
 
         <a href="https://rehabreps.janeapp.com/" class="block bg-rr-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 font-medium text-center mt-4">
           Book Appointment

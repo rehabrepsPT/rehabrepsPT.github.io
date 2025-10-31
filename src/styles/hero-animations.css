@@ -297,32 +297,97 @@
   height: 120%;
 } */
 
-/* Mobile Optimizations */
+/* Mobile Optimizations - Disable animations except rehabilitation progress and carousel */
 @media (max-width: 768px) {
+  /* Hide geometric shapes and particles */
   .geometric-shape {
-    opacity: 0.3;
+    display: none;
   }
-  
+
   .particle {
     display: none;
   }
-  
+
   .hero-word {
     font-size: 2.5rem;
   }
-  
+
   .rehabilitation-progress {
     margin: 2rem 0;
+  }
+
+  /* Disable entry animations - make content immediately visible */
+  .hero-content > * {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: none !important;
+  }
+
+  .hero-content.animate-in > * {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .hero-content.animate-in .hero-description,
+  .hero-content.animate-in .hero-cta {
+    transition-delay: 0s !important;
+  }
+
+  .hero-image-container {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    transition: none !important;
+  }
+
+  .hero-image-container.animate-in {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
+
+  /* Disable hero word animations */
+  .hero-word {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  /* KEEP rehabilitation progress animations (don't disable these) */
+  .progress-fill,
+  .progress-dot,
+  .phase-text,
+  .phase-description {
+    /* Keep their transitions */
+  }
+
+  /* KEEP carousel fade-in animation (don't disable) */
+  .carousel-slide {
+    /* Keep the fadeIn animation */
+  }
+
+  /* Disable carousel indicator animations */
+  .carousel-indicators .indicator {
+    transition: none !important;
+  }
+
+  .carousel-indicators .indicator:hover {
+    transform: none !important;
+  }
+
+  .carousel-indicators .indicator.active {
+    transform: none !important;
+  }
+
+  /* Disable metric animations on mobile */
+  .metric-fill {
+    transition: none !important;
+  }
+
+  .metric-fill::after {
+    animation: none !important;
   }
 }
 
 @media (max-width: 480px) {
   .geometric-shape {
-    opacity: 0.2;
-    transform: scale(0.7);
+    display: none;
   }
-  
-  .shape-1 { width: 80px; height: 80px; }
-  .shape-2 { width: 60px; height: 60px; }
-  .shape-3 { width: 100px; height: 100px; }
 }

@@ -7,18 +7,18 @@ export interface ThemeManager {
 }
 
 export class RehabRepsThemeManager implements ThemeManager {
-  private currentTheme: 'light' | 'dark' | 'system' = 'system';
+  private currentTheme: 'light' | 'dark' | 'system' = 'dark';
   private prefersDarkMedia: MediaQueryList;
-  
+
   constructor() {
     this.prefersDarkMedia = window.matchMedia('(prefers-color-scheme: dark)');
     this.init();
   }
 
   init(): void {
-    // Load saved theme preference or default to system
+    // Load saved theme preference or default to dark
     const savedTheme = localStorage.getItem('rr-theme') as 'light' | 'dark' | 'system' | null;
-    this.currentTheme = savedTheme || 'system';
+    this.currentTheme = savedTheme || 'dark';
 
     // Apply initial theme
     this.applyTheme();
@@ -221,20 +221,8 @@ export class RehabRepsThemeManager implements ThemeManager {
 
 // Utility function to preload theme before page render (prevents flash)
 export function preloadTheme(): void {
-  const savedTheme = localStorage.getItem('rr-theme') as 'light' | 'dark' | 'system' | null;
-  const theme = savedTheme || 'system';
-  
-  let isDark = false;
-  
-  if (theme === 'dark') {
-    isDark = true;
-  } else if (theme === 'system') {
-    isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  }
-
-  if (isDark) {
-    document.documentElement.classList.add('dark');
-  }
+  // Always use dark theme
+  document.documentElement.classList.add('dark');
 }
 
 // Call preload immediately to prevent flash of wrong theme

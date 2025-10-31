@@ -126,3 +126,36 @@ nav a.text-rr-yellow {
     animation: none;
   }
 }
+
+/* Mobile animation disabling - make content immediately visible */
+@media (max-width: 768px) {
+  /* Disable ALL page animations on mobile */
+  .bio-content,
+  .page-title-animate,
+  .page-subtitle-animate,
+  .treatment-section-title,
+  .treatment-section-subtitle,
+  .office-gallery,
+  .service-benefits,
+  .cta-content,
+  .contact-image-container,
+  .contact-form-container,
+  .newsletter-header,
+  .newsletter-form-container,
+  .service-card,
+  .treatment-method {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Disable nav transitions */
+  nav {
+    transition: none !important;
+  }
+
+  /* Keep only essential hover effects, remove animation delays */
+  a, button {
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+  }
+}
