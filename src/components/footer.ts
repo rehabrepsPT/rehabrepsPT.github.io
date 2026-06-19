@@ -56,7 +56,7 @@ export function createFooter(): string {
         <div class="text-center lg:text-left">
           <h5 class="font-semibold text-rr-black mb-4">Contact Us</h5>
           <div class="space-y-2">
-            <p class="text-sm text-gray-600">Dr. Shelby Stewart, PT, DPT, Cert. DN, CF-L2</p>
+            <p class="text-sm text-gray-600">Dr. Shelby Stewart, PT, DPT, Cert. DN, CF-L3</p>
             <p class="text-xs text-gray-500 italic">Owner and Clinician</p>
             <a href="mailto:rehabreps@outlook.com" class="text-sm text-gray-600 hover:text-rr-black transition-colors block">rehabreps@outlook.com</a>
             <a href="tel:+1904-717-2269" class="text-sm text-gray-600 hover:text-rr-black transition-colors block">(904) 717-2269</a>
